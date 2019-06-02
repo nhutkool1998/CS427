@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - myPrefab: {fileID: 1825730589472640, guid: ace84648da4c7e54ca02d4acd94eca5e, type: 3}
+  - prefab: {fileID: 5679387578032673816, guid: b2582fb282f20134e9b8bf434caa4291,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
