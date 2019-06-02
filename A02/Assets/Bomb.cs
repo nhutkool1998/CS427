@@ -15,7 +15,7 @@ public class Bomb : MonoBehaviour
         for (int i = 0; i < 5; i++)
             for (int j = 0; j < 2; j++)
             {
-                Instantiate(prefab, new Vector3(i * 1.5f, j*1.5f, 10), Quaternion.identity);
+                Instantiate(prefab, new Vector3(i*1.0f -5.0f, j*1.0f - 5.0f, 10), Quaternion.identity);
             }
     }
     //void Update()
@@ -23,7 +23,7 @@ public class Bomb : MonoBehaviour
 
     //}
     /*public int numberOfObjects = 20;
-    public float radius = 3f;
+    public float radius = 100f;
     void Start()
     {
         for (int i = 0; i < numberOfObjects; i++)
@@ -42,7 +42,9 @@ public class Bomb : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("key down");
-            Instantiate(prefab, new Vector3(0, 0, 10), Quaternion.identity);
+            Instantiate(prefab, new Vector3(-1.0f, 0, 10), Quaternion.identity);
+            Instantiate(prefab, new Vector3(1.0f, 0, 10), Quaternion.identity);
+            //Destroy(prefab);
         }
     }
 }
