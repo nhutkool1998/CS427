@@ -42,7 +42,7 @@ public class InstantiationExample : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("key down");
-            Instantiate(prefab);
+            Instantiate(prefab, new Vector3(0, 0, 10), Quaternion.identity);
         }
     }
 }
