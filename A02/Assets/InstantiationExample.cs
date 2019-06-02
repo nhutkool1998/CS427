@@ -15,7 +15,7 @@ public class InstantiationExample : MonoBehaviour
         for (int i = 0; i < 5; i++)
             for (int j = 0; j < 2; j++)
             {
-                Instantiate(prefab, new Vector3(i * 0.5f, j*0.5f, 10), Quaternion.identity);
+                Instantiate(prefab, new Vector3(i * 1.5f, j*1.5f, 10), Quaternion.identity);
             }
     }
     //void Update()
