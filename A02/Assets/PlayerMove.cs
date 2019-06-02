@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        Debug.Log("main character");
         rbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 

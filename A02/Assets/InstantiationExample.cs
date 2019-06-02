@@ -37,4 +37,12 @@ public class InstantiationExample : MonoBehaviour
             Instantiate(prefab, pos, rot);
         }
     }*/
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("key down");
+            Instantiate(prefab);
+        }
+    }
 }
