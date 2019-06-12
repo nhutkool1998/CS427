@@ -1,0 +1,12 @@
+Group 22 _ 16APCS
+
+Student 1:
+1651077
+Diệp Gia Hân
+
+Student 2:
+1651027
+Nguyễn Minh Nhựt
+
+Github link:
+https://github.com/nmnhut1998/CS427/tree/master/A03
