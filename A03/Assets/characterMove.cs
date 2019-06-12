@@ -6,16 +6,16 @@ public class characterMove : MonoBehaviour
 {
  
 
-    private int upStep = 0, downStep = 0, leftStep = 0, rightStep = 0;
-    public bool grounded = false;
-    public float jumpForce = 0.1f;
-    public Transform groundCheck;
+    public bool grounded = true;
+    public float jumpForce = 200;
+  
     private Rigidbody2D rb2d;
 
-    private bool jump = false;
+    private bool jump = true;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        grounded = true; 
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class characterMove : MonoBehaviour
         else if (Input.GetKey(KeyCode.UpArrow))
         {
             //transform.Translate(new Vector3, Space.World);
-           if (jump) JumpCharacter();
+           JumpCharacter();
         }
     }
 
@@ -51,5 +51,7 @@ public class characterMove : MonoBehaviour
     {
        if (collision.gameObject.name == "boss")
          this.gameObject.SetActive(false);
+        if (collision.gameObject.name == "platform")
+            grounded = true; 
     }
 }
