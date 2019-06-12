@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 35356229}
   - component: {fileID: 35356232}
   m_Layer: 0
-  m_Name: background-objects_26
+  m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 326249029}
   - component: {fileID: 326249028}
   m_Layer: 0
-  m_Name: background-objects_13
+  m_Name: boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,18 +626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378f9d8420c33475fa8f8f46e3cfa719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left1: {fileID: -5138175416794948981, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  left2: {fileID: 1783533006773279121, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  left3: {fileID: -2131783088781781563, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  right1: {fileID: 7920160254193169549, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  right2: {fileID: -878570881928827111, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  right3: {fileID: -7852202749879541303, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  up1: {fileID: 8659361928518348521, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  up2: {fileID: 6743004343474530775, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  up3: {fileID: -4266804311280791881, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  down1: {fileID: -5199953049146085424, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  down2: {fileID: 6079540714710772940, guid: 07939496cae214700b4dee1b40654108, type: 3}
-  down3: {fileID: 5513401480391997576, guid: 07939496cae214700b4dee1b40654108, type: 3}
+  grounded: 0
+  jumpForce: 800
+  groundCheck: {fileID: 0}
 --- !u!95 &1890140549
 Animator:
   serializedVersion: 3
@@ -669,7 +660,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
