@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 378f9d8420c33475fa8f8f46e3cfa719
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - left1: {fileID: -5138175416794948981, guid: 07939496cae214700b4dee1b40654108,
+      type: 3}
+  - left2: {fileID: 1783533006773279121, guid: 07939496cae214700b4dee1b40654108, type: 3}
+  - left3: {fileID: -2131783088781781563, guid: 07939496cae214700b4dee1b40654108,
+      type: 3}
+  - right1: {fileID: 7920160254193169549, guid: 07939496cae214700b4dee1b40654108,
+      type: 3}
+  - right2: {fileID: -878570881928827111, guid: 07939496cae214700b4dee1b40654108,
+      type: 3}
+  - right3: {fileID: -7852202749879541303, guid: 07939496cae214700b4dee1b40654108,
+      type: 3}
+  - up1: {fileID: 8659361928518348521, guid: 07939496cae214700b4dee1b40654108, type: 3}
+  - up2: {fileID: 6743004343474530775, guid: 07939496cae214700b4dee1b40654108, type: 3}
+  - up3: {fileID: -4266804311280791881, guid: 07939496cae214700b4dee1b40654108, type: 3}
+  - down1: {fileID: -5199953049146085424, guid: 07939496cae214700b4dee1b40654108,
+      type: 3}
+  - down2: {fileID: 6079540714710772940, guid: 07939496cae214700b4dee1b40654108, type: 3}
+  - down3: {fileID: 5513401480391997576, guid: 07939496cae214700b4dee1b40654108, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
