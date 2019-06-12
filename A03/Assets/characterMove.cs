@@ -28,7 +28,6 @@ public class characterMove : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(new Vector3(0.1f, 0, 0));
-          
         }
        
         else if (Input.GetKey(KeyCode.UpArrow))
