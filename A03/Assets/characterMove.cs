@@ -7,8 +7,8 @@ public class characterMove : MonoBehaviour
  
 
     public bool grounded = true;
-    public float jumpForce = 0.1f;
-    public Transform groundCheck;
+    public float jumpForce = 200;
+  
     private Rigidbody2D rb2d;
 
     private bool jump = true;
@@ -39,7 +39,7 @@ public class characterMove : MonoBehaviour
 
     void JumpCharacter()
     {
-        if (grounded)
+        if (true)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
             grounded = false;
