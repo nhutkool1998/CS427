@@ -15,6 +15,7 @@ public class characterMove : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        grounded = true; 
     }
 
     // Update is called once per frame
@@ -39,7 +40,7 @@ public class characterMove : MonoBehaviour
 
     void JumpCharacter()
     {
-        if (true)
+        if (grounded)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
             grounded = false;

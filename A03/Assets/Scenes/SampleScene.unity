@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 1
-  jumpForce: 200
+  jumpForce: 1600
 --- !u!95 &1890140549
 Animator:
   serializedVersion: 3
