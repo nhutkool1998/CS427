@@ -322,7 +322,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: characterSpeed
-    m_EventTreshold: 0.001
+    m_EventTreshold: 0.03
   - m_ConditionMode: 2
     m_ConditionEvent: isJumping
     m_EventTreshold: 0

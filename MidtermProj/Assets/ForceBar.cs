@@ -9,12 +9,13 @@ public class ForceBar : MonoBehaviour
     public float upHodlTime;
 
     public float maxUpDegree;
-    public float minUpDegree; 
+    public float minUpDegree;
 
     public float maxShootForce = 10;
     public float aimAngle;
 
-    public GameObject gainedForceBar; 
+    public float forcePercentPerSecond = 20; 
+    public GameObject gainedForceBar;
     public GameObject character;
     public GameObject aimingCircle;
     public GameObject forceBarCompound;
@@ -26,30 +27,27 @@ public class ForceBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.aimAngle = this.aimingCircle.transform.rotation.z; 
-       if (Input.GetKeyDown(KeyCode.Space))
+        //this.aimAngle = this.aimingCircle.transform.rotation.z; 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             this.spaceHoldTime = 0;
             aimingCircle.SetActive(true);
             forceBarCompound.SetActive(true);
         }
 
-       else if (Input.GetKey(KeyCode.Space))
+        else if (Input.GetKey(KeyCode.Space))
         {
-            this.spaceHoldTime += Time.deltaTime; 
-            var oldScale = this.gainedForceBar.transform.localScale;
-            this.gainedForceBar.transform.localScale = new Vector3(this.spaceHoldTime / maxShootForce, oldScale.y, oldScale.z);
+            if (this.spaceHoldTime < maxShootForce)
+            {
+                this.spaceHoldTime += Time.deltaTime * forcePercentPerSecond;
+                var oldScale = this.gainedForceBar.transform.localScale;
+                this.gainedForceBar.transform.localScale = new Vector3(this.spaceHoldTime / maxShootForce, oldScale.y, oldScale.z);
+            }
+            else performShoot();
         }
         else if (Input.GetKeyUp(KeyCode.Space) && spaceHoldTime > 0)
         {
-
-            this.character.GetComponent<CharacterMovement>().shootForce = this.spaceHoldTime;
-            this.aimAngle = this.aimingCircle.transform.eulerAngles.z;
-            this.character.GetComponent<CharacterMovement>().shootAngle = this.aimAngle; 
-            this.character.GetComponent<CharacterMovement>().SendMessage("CharacterShoot");
-            Debug.Log("Key up");
-            aimingCircle.SetActive(false);
-            forceBarCompound.SetActive(false); 
+            performShoot();
         }
 
         if (aimingCircle.activeSelf)
@@ -60,32 +58,49 @@ public class ForceBar : MonoBehaviour
                 //aimingCircle.SetActive(true);
                 //forceBarCompound.SetActive(true);
             }
-
+            if (aimAngle < minUpDegree)
+                aimAngle = minUpDegree;
             else if (Input.GetKey(KeyCode.UpArrow))
             {
-                this.upHodlTime += Time.deltaTime*1f;
-                var oldScale = this.aimingCircle.transform.rotation;
-                this.aimAngle = this.upHodlTime *   (maxUpDegree - minUpDegree) + minUpDegree;
-                Debug.Log("aimAngle" + aimAngle); 
+                this.upHodlTime += Time.deltaTime * 1f;
+
+                var oldScale = this.aimingCircle.transform.eulerAngles;
+                this.aimAngle += Time.deltaTime / 2 * (maxUpDegree - minUpDegree);
+                //Debug.Log("aimAngle" + aimAngle);
                 if (this.aimAngle > maxUpDegree)
-                    this.aimAngle = maxUpDegree;  
-                this.aimingCircle.transform.eulerAngles = new Vector3(oldScale.x, oldScale.y,  this.aimAngle);
+                    this.aimAngle = maxUpDegree;
+                if (aimAngle < minUpDegree)
+                    aimAngle = minUpDegree;
+                this.aimingCircle.transform.eulerAngles = new Vector3(oldScale.x, oldScale.y, this.aimAngle);
             }
 
 
-             if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 this.upHodlTime -= Time.deltaTime * 1.0f;
-                var oldScale = this.aimingCircle.transform.rotation;
-                this.aimAngle = this.upHodlTime * (maxUpDegree - minUpDegree) + minUpDegree;
+                var oldScale = this.aimingCircle.transform.eulerAngles;
+                this.aimAngle -= Time.deltaTime / 2 * (maxUpDegree - minUpDegree);
                 Debug.Log("aimAngle" + aimAngle);
                 if (this.aimAngle > maxUpDegree)
                     this.aimAngle = maxUpDegree;
+                if (aimAngle < minUpDegree)
+                    aimAngle = minUpDegree;
                 this.aimingCircle.transform.eulerAngles = new Vector3(oldScale.x, oldScale.y, this.aimAngle);
             }
 
         }
 
         //Debug.Log(spaceHoldTime); 
+    }
+    void performShoot()
+    {
+        this.character.GetComponent<CharacterMovement>().shootForce = this.spaceHoldTime;
+        this.aimAngle = this.aimingCircle.transform.eulerAngles.z;
+        this.character.GetComponent<CharacterMovement>().shootAngle = this.aimAngle;
+        this.character.GetComponent<CharacterMovement>().SendMessage("CharacterShoot");
+        Debug.Log("Key up");
+        aimingCircle.SetActive(false);
+        forceBarCompound.SetActive(false);
+        spaceHoldTime = 0;
     }
 }

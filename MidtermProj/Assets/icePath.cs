@@ -13,6 +13,8 @@ public class icePath : MonoBehaviour
     public float gravity = 10f;
     private float preY, preX;
     private float x0, y0;
+    public float projectileSpeed;
+    public float idealForce = 15; 
     void Start()
     {
         //GetComponent<Rigidbody2D>().centerOfMass = new Vector2(0.1f, 0); 
@@ -43,9 +45,10 @@ public class icePath : MonoBehaviour
         //flyingTime += Time.deltaTime; 
         isFlying = true;
         //GetComponent<Rigidbody2D>().
+        projectileSpeed = throwForce / idealForce; 
         preX = preY = 0;
-        if (throwAngle > 90)
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        //if (throwAngle > 90)
+            //transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
     // Update is called once per frame
     void Update()
@@ -71,8 +74,8 @@ public class icePath : MonoBehaviour
         //    isFlying = true;
         //    //GetComponent<Rigidbody2D>().
         //    preX = preY = 0;
-        //    if (throwAngle > 90)
-        //        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            if (throwAngle > 90 && throwAngle < 180)
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 
         //}
 
@@ -100,7 +103,7 @@ public class icePath : MonoBehaviour
             preY = y;
             transform.eulerAngles = new Vector3(0, 0, lineAngle);
             //Debug.Log("Line Angle: "+ lineAngle); 
-            flyingTime += Time.deltaTime/2;
+            flyingTime += Time.deltaTime*projectileSpeed;
 
             if (y < y0-10)
             {
