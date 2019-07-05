@@ -100,9 +100,9 @@ public class icePath : MonoBehaviour
             preY = y;
             transform.eulerAngles = new Vector3(0, 0, lineAngle);
             //Debug.Log("Line Angle: "+ lineAngle); 
-            flyingTime += Time.deltaTime*2;
+            flyingTime += Time.deltaTime/2;
 
-            if (y < y0)
+            if (y < y0-10)
             {
                 isFlying = false;
                 Destroy(gameObject); 

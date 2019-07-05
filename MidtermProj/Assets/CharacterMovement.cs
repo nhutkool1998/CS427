@@ -8,14 +8,22 @@ public class CharacterMovement : MonoBehaviour
     public float HP = 10.0f;
     public bool isSliding = false;
     public bool isJumping = false;
-    public float llllll = 0.0f;
+
     public Rigidbody2D rigidBody2D;
     public float thrustForce = 1000000f;
     public bool isGrounded = true; 
+
     public float jumpAngle, jumpForce;
+
     public Animator animator;
     private GameObject iceBolt; 
-    public int direction = 1; 
+    public int direction = 1;
+
+    public GameObject projectile;
+    public float shootAngle;
+    public float shootForce;
+
+    //private float spaceHoldTime; 
 
     void Start()
     {
@@ -48,18 +56,18 @@ public class CharacterMovement : MonoBehaviour
     {
         //float mmmmm = 0;
         animator.SetFloat("characterSpeed", 0.0f);
-        if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
-        {
-            //transform.Translate(Vector2.up*3);
-            float forceY = -Mathf.Sin(jumpAngle) * jumpForce * 2;
-            float forceX = -direction*Mathf.Cos(jumpAngle) * jumpForce / 2;
-            Debug.Log(forceX + " " + forceY); 
-            rigidBody2D.AddForce(new Vector2(forceX, forceY));
-            isGrounded = false;
-            isJumping = true;
-            Debug.Log("jumping!"); 
+        //if (Input.GetKey(KeyCode.UpArrow) && isGrounded)
+        //{
+        //    //transform.Translate(Vector2.up*3);
+        //    float forceY = -Mathf.Sin(jumpAngle) * jumpForce * 2;
+        //    float forceX = -direction*Mathf.Cos(jumpAngle) * jumpForce / 2;
+        //    Debug.Log(forceX + " " + forceY); 
+        //    rigidBody2D.AddForce(new Vector2(forceX, forceY));
+        //    isGrounded = false;
+        //    isJumping = true;
+        //    Debug.Log("jumping!"); 
 
-        }
+        //}
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             //animator.SetFloat("characterSpeed", 2.0f);
@@ -93,18 +101,11 @@ public class CharacterMovement : MonoBehaviour
             //mmmmm = 2.0f;
         }
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (iceBolt == null)
-            {
-                iceBolt = Object.Instantiate(GameObject.Find("iceBolt"));
-                iceBolt.transform.position =  new Vector3(transform.position.x + 0.3f,transform.position.y,transform.position.y);
-                var icePath = iceBolt.GetComponent<icePath>();
-                icePath.throwAngle = 30;
+       
 
-                icePath.SendMessage("Shoot");
-            }
-        }
+
+
+      
 
         //else llllll = 0;
 
@@ -112,6 +113,22 @@ public class CharacterMovement : MonoBehaviour
         //animator.SetBool("isSliding", isSliding);
         animator.SetBool("isJumping", isJumping);
         //animator.SetFloat("HP", HP);
+    }
+
+    public void CharacterShoot()
+    {
+        if (iceBolt == null || true)
+        {
+            iceBolt = Object.Instantiate(projectile);
+            var orb = transform.GetChild(0);
+            iceBolt.transform.position = new Vector3(transform.position.x, orb.transform.position.y, transform.position.z);
+            //iceBolt.transform.position = new Vector3(transform.position.x, transform.position.y - orb.transform.position.y, transform.position.y);
+
+            var icePath = iceBolt.GetComponent<icePath>();
+            icePath.throwAngle = shootAngle;
+            icePath.throwForce = shootForce; 
+            icePath.SendMessage("Shoot");
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
